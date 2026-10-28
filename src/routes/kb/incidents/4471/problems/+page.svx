@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · three problems, not one'
 owner: support desk
-status: open
+status: closed
 reviewed: 2026-10-28
 signature: bstefanov31
 ---
@@ -15,7 +15,8 @@ signature: bstefanov31
 
 [#4471](/kb/incidents/4471) is marked known: one issue, one parser fix queued. It was merged on
 subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject)), so nobody read the bodies.
-Read by tenant, booking form and body, its reports are three problems. Each now has a ticket of its own.
+Read by tenant, booking form and body, its reports are three problems. Each got a ticket of its
+own; all three are now closed and handed to the desk.
 
 <ProblemTable
   ticket={4471}
@@ -40,7 +41,8 @@ moves keep coming after it ships. Do not close #4471 on the parser fix alone.
   tenants on booking-v3. Same symptom as the parser, different fix: the hint.
 - **one-day move** — the date moves by one day, or the weekday is off by one, or one meeting lands
   on different days in different cities. A swap cannot do that. Likely a time-zone conversion.
-  These are the reports the desk already listed in `desk-notes.json`.
+  These are the reports the desk already listed in `desk-notes.json`; the desk counts them where
+  they are filed, under `parser`, so they show in both rows.
 
 ## Triaging the next one
 
