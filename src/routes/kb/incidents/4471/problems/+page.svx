@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: support desk
+status: open
+reviewed: 2026-10-28
+signature: bstefanov31
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) is marked known: one issue, one parser fix queued. It was merged on
+subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject)), so nobody read the bodies.
+Read by tenant, booking form and body, its reports are three problems. Each now has a ticket of its own.
+
+<ProblemTable
+  ticket={4471}
+  tickets={{
+    parser: 'https://github.com/BorislavStefanov31/support-kb/issues/1',
+    hint: 'https://github.com/BorislavStefanov31/support-kb/issues/2',
+    'one-day move': 'https://github.com/BorislavStefanov31/support-kb/issues/3',
+  }}
+/>
+
+<Callout kind="warn">
+The queued parser fix closes only the first problem. Reports from booking-v3 forms and one-day
+moves keep coming after it ships. Do not close #4471 on the parser fix alone.
+</Callout>
+
+## Telling them apart
+
+- **parser** — the shared parser reads dates month first; our tenants write the day first.
+  Day and month swap: 7 April arrives as 4 July. Every day-first tenant, every channel.
+- **hint** — booking-v3 prints `MM/DD/YYYY` under its date field. People type month first, as
+  told, and the form reads the tenant's way, day first. Only reports sent through the form, only
+  tenants on booking-v3. Same symptom as the parser, different fix: the hint.
+- **one-day move** — the date moves by one day, or the weekday is off by one, or one meeting lands
+  on different days in different cities. A swap cannot do that. Likely a time-zone conversion.
+  These are the reports the desk already listed in `desk-notes.json`.
+
+## Triaging the next one
+
+- The subject line does not tell these apart. Look up the tenant (locale, booking form) and the
+  channel, then read the body: two dates that swap day and month, or one day apart.
+- The intake tag is a guess from the reporter's browser. Use the tenant, not the tag.
+- The export repeats some reports. Count by id.
+
+<RenderStamp {signature} />

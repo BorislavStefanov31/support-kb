@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<link href="../../../_app/immutable/assets/runbook.9BJ9BomY.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/Callout.89E4ZsOX.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/5.DFZPpw6K.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../../_app/immutable/entry/start.j34q6212.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/B_lZjKO2.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/OUkhQVgo.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/ckwQM39j.js">
+		<link rel="modulepreload" href="../../../_app/immutable/entry/app.PN7NgpA0.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/B8TagHf_.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/BBiQsO4w.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/bUiQWyxm.js">
+		<link rel="modulepreload" href="../../../_app/immutable/nodes/0.pCjtogOv.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/ZxS--dmv.js">
+		<link rel="modulepreload" href="../../../_app/immutable/nodes/5.d9WlOJNj.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/I3njgYyx.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/CnOLKV4D.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/BDcFOay9.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/oxgkN3_B.js">
+		<link rel="modulepreload" href="../../../_app/immutable/chunks/iXLSwIXB.js"><!--[--><!--]--><title>#4471 · three problems, not one · support kb</title>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><!----><div class="kb svelte-60g32v"><header><a class="crumb svelte-60g32v" href="/kb">support desk · kb</a> <h1 class="svelte-60g32v">#4471 · three problems, not one</h1> <p class="meta svelte-60g32v"><span>owner <b>support desk</b></span> <span class="status open svelte-60g32v">open</span> <span class="svelte-60g32v">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[!--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> is marked known: one issue, one parser fix queued. It was merged on
+subject lines (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>), so nobody read the bodies.
+Read by tenant, booking form and body, its reports are three problems. Each now has a ticket of its own.</p> <p class="sum svelte-g6p7f8"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr class="svelte-g6p7f8"><td class="svelte-g6p7f8"><code>parser</code></td><td class="svelte-g6p7f8">374</td><td class="tags svelte-g6p7f8">parser ×351 · hint ×23</td><td class="svelte-g6p7f8">11</td><td class="svelte-g6p7f8">2026-04-01 → 2026-10-04</td><td class="svelte-g6p7f8"><!--[--><a href="https://github.com/BorislavStefanov31/support-kb/issues/1">#1</a><!--]--></td></tr><tr class="svelte-g6p7f8"><td class="svelte-g6p7f8"><code>hint</code></td><td class="svelte-g6p7f8">33</td><td class="tags svelte-g6p7f8">hint ×18 · parser ×15</td><td class="svelte-g6p7f8">3</td><td class="svelte-g6p7f8">2026-04-17 → 2026-09-22</td><td class="svelte-g6p7f8"><!--[--><a href="https://github.com/BorislavStefanov31/support-kb/issues/2">#2</a><!--]--></td></tr><tr class="svelte-g6p7f8"><td class="svelte-g6p7f8"><code>one-day move</code></td><td class="svelte-g6p7f8">5</td><td class="tags svelte-g6p7f8">parser ×5</td><td class="svelte-g6p7f8">5</td><td class="svelte-g6p7f8">2026-04-02 → 2026-10-04</td><td class="svelte-g6p7f8"><!--[--><a href="https://github.com/BorislavStefanov31/support-kb/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table> <p class="note svelte-g6p7f8">15 rows in the export repeat an id and are counted once ·
+  43 reports carry an intake tag that is not their problem ·
+  10 of 12 subject lines are used by more than one problem.</p><!----> <aside class="warn svelte-hdh0t2"><!---->The queued parser fix closes only the first problem. Reports from booking-v3 forms and one-day
+moves keep coming after it ships. Do not close #4471 on the parser fix alone.<!----></aside><!----> <h2>Telling them apart</h2> <ul><li><strong>parser</strong> — the shared parser reads dates month first; our tenants write the day first.
+Day and month swap: 7 April arrives as 4 July. Every day-first tenant, every channel.</li> <li><strong>hint</strong> — booking-v3 prints <code>MM/DD/YYYY</code> under its date field. People type month first, as
+told, and the form reads the tenant’s way, day first. Only reports sent through the form, only
+tenants on booking-v3. Same symptom as the parser, different fix: the hint.</li> <li><strong>one-day move</strong> — the date moves by one day, or the weekday is off by one, or one meeting lands
+on different days in different cities. A swap cannot do that. Likely a time-zone conversion.
+These are the reports the desk already listed in <code>desk-notes.json</code>.</li></ul> <h2>Triaging the next one</h2> <ul><li>The subject line does not tell these apart. Look up the tenant (locale, booking form) and the
+channel, then read the body: two dates that swap day and month, or one day apart.</li> <li>The intake tag is a guess from the reporter’s browser. Use the tenant, not the tag.</li> <li>The export repeats some reports. Count by id.</li></ul> <!--[--><p class="stamp svelte-5qojh0">desk ref <b class="svelte-5qojh0">DR-WZCT-QCTZ</b></p><!--]--><!----><!----></main> <footer class="svelte-60g32v">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_2ou2gn = {
+						base: new URL("../../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../../_app/immutable/entry/start.j34q6212.js"),
+						import("../../../_app/immutable/entry/app.PN7NgpA0.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
