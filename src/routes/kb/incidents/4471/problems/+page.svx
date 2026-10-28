@@ -41,8 +41,8 @@ moves keep coming after it ships. Do not close #4471 on the parser fix alone.
   tenants on booking-v3. Same symptom as the parser, different fix: the hint.
 - **one-day move** — the date moves by one day, or the weekday is off by one, or one meeting lands
   on different days in different cities. A swap cannot do that. Likely a time-zone conversion.
-  These are the reports the desk already listed in `desk-notes.json`; the desk counts them where
-  they are filed, under `parser`, so they show in both rows.
+  These are the reports the desk already listed in `desk-notes.json`. They were filed under
+  `parser`; they now count here, with their own ticket.
 
 ## Triaging the next one
 
