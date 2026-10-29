@@ -3,8 +3,8 @@ layout: runbook
 title: '#4471 · three problems, not one'
 owner: support desk
 status: closed
-reviewed: 2026-10-28
-signature: bstefanov31
+reviewed: 2026-10-29
+signature: v1.eyJzdWIiOiI1MDgiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzMwNjYyOSwiZXhwIjoxNzkzMzkzMDI5fQ.JS8_FSoL-a4ZsvlB_0OW5nSHsxZRgN6QJhXkmgLuYU0
 ---
 
 <script>
@@ -13,10 +13,10 @@ signature: bstefanov31
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-[#4471](/kb/incidents/4471) is marked known: one issue, one parser fix queued. It was merged on
+[#4471](/kb/incidents/4471) was marked known: one issue, one parser fix queued. It was merged on
 subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject)), so nobody read the bodies.
 Read by tenant, booking form and body, its reports are three problems. Each got a ticket of its
-own; all three are now closed and handed to the desk.
+own.
 
 <ProblemTable
   ticket={4471}
@@ -27,22 +27,25 @@ own; all three are now closed and handed to the desk.
   }}
 />
 
-<Callout kind="warn">
-The queued parser fix closes only the first problem. Reports from booking-v3 forms and one-day
-moves keep coming after it ships. Do not close #4471 on the parser fix alone.
+<Callout>
+
+Engineering closed #4471 on 5 October. **parser**: fixed (`fix(dates): parse dd/mm for eu
+locales`). **hint**: won't fix, the booking-v3 form is retired. Neither change touches a one-day
+move: a time-zone shift is not a day/month swap.
+
 </Callout>
 
 ## Telling them apart
 
-- **parser** — the shared parser reads dates month first; our tenants write the day first.
-  Day and month swap: 7 April arrives as 4 July. Every day-first tenant, every channel.
+- **parser** — the shared parser read dates month first; our tenants write the day first.
+  Day and month swap: 7 April arrives as 4 July. Every day-first tenant, every channel. Fixed.
 - **hint** — booking-v3 prints `MM/DD/YYYY` under its date field. People type month first, as
   told, and the form reads the tenant's way, day first. Only reports sent through the form, only
-  tenants on booking-v3. Same symptom as the parser, different fix: the hint.
+  tenants on booking-v3. Same symptom as the parser, different cause. Gone with the form.
 - **one-day move** — the date moves by one day, or the weekday is off by one, or one meeting lands
   on different days in different cities. A swap cannot do that. Likely a time-zone conversion.
-  These are the reports the desk already listed in `desk-notes.json`. They were filed under
-  `parser`; they now count here, with their own ticket.
+  These are the reports the desk already listed in `desk-notes.json`; the desk counts them where
+  they are filed, under `parser`, so they show in both rows.
 
 ## Triaging the next one
 
@@ -50,5 +53,7 @@ moves keep coming after it ships. Do not close #4471 on the parser fix alone.
   channel, then read the body: two dates that swap day and month, or one day apart.
 - The intake tag is a guess from the reporter's browser. Use the tenant, not the tag.
 - The export repeats some reports. Count by id.
+- A day/month swap reported after 5 October means the parser fix missed a case: open a new
+  ticket and link #4471.
 
 <RenderStamp {signature} />
